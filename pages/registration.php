@@ -1,3 +1,5 @@
+<link rel="stylesheet" href="../styles/register.css">
+
 <?php
 
 require_once '../includes/dbconnect.php';
@@ -77,58 +79,50 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 ?>
 
 <body>
-    <div class="container">
-        <div class="card card-register mx-auto mt-5">
-            <h5 class="card-header text-center">Register</h5>
-            <div class="card-body">
+    <div class="register-container">
+        <h2 class="text-center">Register</h2>
+        <div class="card-body">
+            <!-- Error messages -->
+            <?php 
+        if (!empty($email_err)) {
+            echo '<div class="alert alert-danger">' . $email_err . '</div>';
+        }
+        if (!empty($password_err)) {
+            echo '<div class="alert alert-danger">' . $password_err . '</div>';
+        }
+        if (!empty($confirm_password_err)) {
+            echo '<div class="alert alert-danger">' . $confirm_password_err . '</div>';
+        }
+        ?>
 
-                <!-- Error messages -->
-                <?php 
-                if (!empty($email_err)) {
-                    echo '<div class="alert alert-danger">' . $email_err . '</div>';
-                }
-                if (!empty($password_err)) {
-                    echo '<div class="alert alert-danger">' . $password_err . '</div>';
-                }
-                if (!empty($confirm_password_err)) {
-                    echo '<div class="alert alert-danger">' . $confirm_password_err . '</div>';
-                }
-                ?>
+            <form method="post" action="registration.php">
+                <!-- Email field -->
+                <div class="mb-3">
+                    <label for="email">Email</label>
+                    <input class="form-control" id="email" type="email" aria-describedby="emailHelp" name="email"
+                        value="<?php echo htmlspecialchars($email); ?>" required>
+                </div>
 
-                <form method="post" action="registration.php">
-
-                    <!-- email part -->
-                    <div class="row g-3">
-                        <div class="col-md-12">
-                            <label for="email">Email</label>
-                            <input class="form-control" id="email" type="email" aria-describedby="emailHelp"
-                                name="email" value="<?php echo htmlspecialchars($email); ?>">
-                        </div>
+                <!-- Password fields -->
+                <div class="row g-3">
+                    <div class="col-md-6 mb-3">
+                        <label for="psw">Password</label>
+                        <input class="form-control" id="psw" type="password" name="psw" required>
                     </div>
-
-                    <!-- password part -->
-                    <div class="row g-3 mt-1">
-                        <div class="col-md-6">
-                            <label for="psw">Password</label>
-                            <input class="form-control" id="psw" type="password" name="psw">
-                        </div>
-                        <div class="col-md-6">
-                            <label for="psw-repeat">Confirm Password</label>
-                            <input class="form-control" id="psw-repeat" type="password" name="psw-repeat">
-                        </div>
+                    <div class="col-md-6 mb-3">
+                        <label for="psw-repeat">Confirm Password</label>
+                        <input class="form-control" id="psw-repeat" type="password" name="psw-repeat" required>
                     </div>
+                </div>
 
-                    <div class="row g-3 mt-1">
-                        <div class="d-grid gap-2" >
-                            <button type="submit" class="btn btn-primary" name="reg_user">Register</button>
-                        </div>
-                    </div>
+                <div class="d-grid gap-2">
+                    <button type="submit" class="btn btn-primary" name="reg_user">Register</button>
+                </div>
 
-                    <div class="text-center">
-                        <a class="d-block small mt-3" href="login.php">Login Page</a>
-                    </div>
-                </form>
-            </div>
+                <div class="text-center mt-3">
+                    <a class="d-block small" href="login.php">Already have an account? Login here</a>
+                </div>
+            </form>
         </div>
     </div>
 </body>
