@@ -3,6 +3,7 @@
 <?php
     require_once '../includes/dbconnect.php';
     include_once("../includes/header.php");
+    include '../includes/message.php';
 
      $username = "";
      $password = "";
@@ -84,14 +85,16 @@
      }
 ?>
 
-<?php
-        if(!empty($login_err)){
-            echo '<div class="error">' . $login_err . '</div>';
-        }
-?>
 
 <div class="login-container">
     <h2 class="text-center">Login</h2>
+
+    <!-- Display error messages -->
+    <?php if (!empty($login_err)): ?>
+        <div class="alert alert-danger" role="alert">
+            <?php echo $login_err; ?>
+        </div>
+    <?php endif; ?>
 
     <!-- Login form -->
     <form action=<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?> method="post">
