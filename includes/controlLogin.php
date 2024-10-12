@@ -10,4 +10,6 @@
     if($_SESSION["type"] == "Admin"){
         $isAdmin = true;
     }
+
+    include 'session_timeout.php';
 ?>
