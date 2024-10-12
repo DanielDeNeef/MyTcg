@@ -2,6 +2,13 @@
 
 <?php
     require_once '../includes/dbconnect.php';
+
+    // check if the user is already connected then redirect to the index page
+    if(isset($_SESSION["login"]) && $_SESSION["login"] == true){
+        header("location: ../index.php");
+        exit;
+    }
+
     include_once("../includes/header.php");
     include '../includes/message.php';
 
@@ -62,7 +69,7 @@
                                  $_SESSION["type"] = $rol;
  
                                  // redirect to the home page
-                                 header("location: home.php");
+                                 header("location: ../index.php");
                              } else{
  
                                  // credentials are not correct set error
@@ -91,9 +98,9 @@
 
     <!-- Display error messages -->
     <?php if (!empty($login_err)): ?>
-        <div class="alert alert-danger" role="alert">
-            <?php echo $login_err; ?>
-        </div>
+    <div class="alert alert-danger" role="alert">
+        <?php echo $login_err; ?>
+    </div>
     <?php endif; ?>
 
     <!-- Login form -->
