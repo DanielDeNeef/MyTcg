@@ -3,8 +3,14 @@
 <?php
 
 require_once '../includes/dbconnect.php';
-include_once("../includes/header.php");
 
+// check if the user is already connected then redirect to the index page
+if(isset($_SESSION["login"]) && $_SESSION["login"] == true){
+    header("location: ../index.php");
+    exit;
+}
+
+include_once("../includes/header.php");
 
 $email = $password = $confirm_password = "";
 $email_err = $password_err = $confirm_password_err = "";
