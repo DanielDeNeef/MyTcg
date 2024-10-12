@@ -1,6 +1,7 @@
 <?php 
     session_start();
     include 'includes/controlLogin.php';
+    include 'includes/session_timeout.php';
     include 'includes/header.php';
 ?>
 
