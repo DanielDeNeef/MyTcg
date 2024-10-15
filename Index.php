@@ -8,7 +8,7 @@
 
 <?php include 'includes/navigation.php' ?>
 
-<div id="content" class="container-fluid px-4">
+<div id="content">
 
     <!-- Dashboard Section -->
     <section id="dashboard">
