@@ -1,27 +1,28 @@
 <?php 
-    function renderToast($type, $message) {
-        if (!empty($message)): 
-            // Assigning classes based on toast type
-            $toastClass = '';
-            switch ($type) {
-                case 'success':
-                    $toastClass = 'bg-success text-white';
-                    break;
-                case 'error':
-                    $toastClass = 'bg-danger text-white';
-                    break;
-                case 'warning':
-                    $toastClass = 'bg-warning text-dark';
-                    break;
-                case 'info':
-                    $toastClass = 'bg-info text-dark';
-                    break;
-                default:
-                    $toastClass = 'bg-light text-dark';
-            }
+function renderToast($type, $message) {
+    if (!empty($message)): 
+        // Assigning classes based on toast type
+        $toastClass = '';
+        switch ($type) {
+            case 'success':
+                $toastClass = 'bg-success text-white';
+                break;
+            case 'error':
+                $toastClass = 'bg-danger text-white';
+                break;
+            case 'warning':
+                $toastClass = 'bg-warning text-dark';
+                break;
+            case 'info':
+                $toastClass = 'bg-info text-dark';
+                break;
+            default:
+                $toastClass = 'bg-light text-dark';
+        }
 ?>
 
-<div class="toast-container position-fixed top-0 end-0 p-3">
+<!-- Toast Container -->
+<div class="toast-container position-fixed top-0 start-50 translate-middle-x p-3">
     <div id="genericToast" class="toast <?php echo $toastClass; ?>" role="alert" aria-live="assertive" aria-atomic="true">
         <div class="toast-header">
             <strong class="me-auto"><?php echo ucfirst($type); ?> Notification</strong>
@@ -41,6 +42,6 @@
 </script>
 
 <?php 
-        endif; 
-    }
+    endif; 
+}
 ?>
