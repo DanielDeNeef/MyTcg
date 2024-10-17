@@ -1,7 +1,7 @@
 <?php 
     
-     // Handle Create Request
-     if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['createUser'])) {
+    // Handle Create Request
+    if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['createUser'])) {
         $username = $_POST['username'];
         $type = $_POST['type'];
         $active = $_POST['active'];
