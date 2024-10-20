@@ -11,6 +11,14 @@
     <div class="container mt-5">
         <h2 class="mb-4"><?= htmlspecialchars($set['Name']) ?>: Cards Management</h2>
 
+        <!-- Display toast message if available -->
+        <?php 
+            if (isset($_SESSION['toast'])) {
+                renderToast($_SESSION['toast']['type'], $_SESSION['toast']['message']);
+                unset($_SESSION['toast']); 
+            }
+        ?>
+
         <!-- Button to Create Card -->
         <button class="btn btn-primary mb-4" data-bs-toggle="modal" data-bs-target="#createCardModal">
             Create Card
@@ -35,10 +43,9 @@
                     <td><img src="<?= htmlspecialchars($row['Image']) ?>" alt="Image" width="50"></td>
                     <td>
                         <!-- Update Button -->
-                        <button class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#updateCardModal"
-                            data-id="<?= $row['id'] ?>" data-name="<?= htmlspecialchars($row['Name']) ?>"
-                            data-type="<?= htmlspecialchars($row['CardNumber']) ?>"
-                            data-image="<?= htmlspecialchars($row['Image']) ?>">
+                        <button 
+                            class="btn btn-warning" 
+                            onclick="openUpdateCardModal('<?= $row['id'] ?>', '<?= $row['Name'] ?>', '<?= $row['CardNumber'] ?>', '<?= $row['Image'] ?>')">
                             Update
                         </button>
 
@@ -60,6 +67,6 @@
 <?php include '../includes/cardModals.php'; ?>
 
 <!-- Include the card.js script -->
-<script src="../scripts/card.js"></script>
+<script src="../scripts/game.js"></script>
 
 <?php include_once('../includes/footer.php'); ?>

@@ -48,5 +48,16 @@ function deleteSet(setId, gameId) {
     }
 }
 
+//Function to open the update card modal and fill in the details
+function openUpdateCardModal(cardId, cardName, cardNumber, cardImage) {
+    document.getElementById('update_card_id').value = cardId;
+    document.getElementById('update_card_name').value = cardName;
+    document.getElementById('update_card_number').value = cardNumber;
+    document.getElementById('update_card_image').value = cardImage;
+
+    // Show the modal
+    $('#updateCardModal').modal('show');
+}
+
 
 
