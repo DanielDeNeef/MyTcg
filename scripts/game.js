@@ -1,3 +1,7 @@
+/**
+ * Game Logic
+*/
+
 //Function for Update Modal (prefill with data)
 document.addEventListener('DOMContentLoaded', function () {
     var updateGameModal = document.getElementById('updateGameModal');
@@ -24,6 +28,10 @@ function deleteGame(gameId) {
     }
 }
 
+/**
+ * Set Logic
+*/
+
 //Function for update gameSet Modal (prefill with data) 
 document.addEventListener('DOMContentLoaded', function() {
     const updateButtons = document.querySelectorAll('[data-bs-target="#updateSetModal"]');
@@ -48,6 +56,10 @@ function deleteSet(setId, gameId) {
     }
 }
 
+/**
+ * Card Logic
+*/
+
 //Function to open the update card modal and fill in the details
 function openUpdateCardModal(cardId, cardName, cardNumber, cardImage) {
     document.getElementById('update_card_id').value = cardId;
@@ -57,6 +69,13 @@ function openUpdateCardModal(cardId, cardName, cardNumber, cardImage) {
 
     // Show the modal
     $('#updateCardModal').modal('show');
+}
+
+//Function do delete game set from id
+function deleteCard(cardId, setId, gameId) {
+    if (confirm('Are you sure you want to delete this set?')) {
+        window.location.href = `card.php?card_id=${cardId}&set_id=${setId}&game_id=${gameId}`;
+    }
 }
 
 

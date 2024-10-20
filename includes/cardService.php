@@ -90,6 +90,7 @@
     if (isset($_GET['card_id'])) {
         $card_id = $_GET['card_id'];
         $set_id = $_GET['set_id'];
+        $game_id = $GET['game_id'];
 
         if (!empty($card_id)) {
             $sql = "DELETE FROM card WHERE id = ?";

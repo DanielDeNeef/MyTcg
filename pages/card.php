@@ -50,7 +50,7 @@
                         </button>
 
                         <!-- Delete Button -->
-                        <button class="btn btn-danger" onclick="deleteCard(<?= $row['id'] ?>, <?= $set_id ?>)">Delete</button>
+                        <button class="btn btn-danger" onclick="deleteCard(<?= $row['id'] ?>, <?= $set_id ?>,<?= $game_id ?>)">Delete</button>
                     </td>
                 </tr>
                 <?php endwhile; ?>
