@@ -5,11 +5,11 @@
 
     <!-- Display toast message if available -->
     <?php 
-            if (isset($_SESSION['toast'])) {
-                renderToast($_SESSION['toast']['type'], $_SESSION['toast']['message']);
-                unset($_SESSION['toast']); 
-            }
-        ?>
+        if (isset($_SESSION['toast'])) {
+            renderToast($_SESSION['toast']['type'], $_SESSION['toast']['message']);
+            unset($_SESSION['toast']); 
+        }
+    ?>
 
     <!-- Create Game Button -->
     <button class="btn btn-primary mb-4" data-bs-toggle="modal" data-bs-target="#createGameModal">
@@ -36,17 +36,20 @@
             <?php if ($gamesResult->num_rows > 0): ?>
             <?php while ($row = $gamesResult->fetch_assoc()): ?>
             <tr>
-                <td><?= htmlspecialchars($row['Name']) ?></td>
+                <td>
+                    <a href="gameSets.php?game_id=<?= $row['id'] ?>">
+                        <?= htmlspecialchars($row['Name']) ?>
+                    </a>
+                </td>
                 <td><img src="<?= htmlspecialchars($row['Logo']) ?>" alt="Logo" width="50"></td>
                 <td>
-                    <!-- Update Buttons -->
+                    <!-- Update Button -->
                     <button class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#updateGameModal"
                         data-id="<?= $row['id'] ?>" data-name="<?= htmlspecialchars($row['Name']) ?>"
                         data-logo="<?= htmlspecialchars($row['Logo']) ?>">
                         Update
                     </button>
-
-                    <!-- Delete Buttons -->
+                    <!-- Delete Button -->
                     <button class="btn btn-danger" onclick="deleteGame(<?= $row['id'] ?>)">Delete</button>
                 </td>
             </tr>
