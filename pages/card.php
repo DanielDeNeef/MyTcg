@@ -3,32 +3,7 @@
     include '../includes/dbconnect.php';
     include '../includes/controlLogin.php';
     include '../includes/message.php';
-
-    //Get set_id and game_id from the URL
-    if (isset($_GET['set_id']) && isset($_GET['game_id'])) {
-        $set_id = $_GET['set_id'];
-        $game_id = $_GET['game_id'];
-
-        //Fetch the set and game details
-        $setSql = "SELECT * FROM cardSet WHERE id = ?";
-        $stmt = $conn->prepare($setSql);
-        $stmt->bind_param("i", $set_id);
-        $stmt->execute();
-        $setResult = $stmt->get_result();
-        $set = $setResult->fetch_assoc();
-
-        //Fetch the cards for this game set
-        $sqlCards = "SELECT * FROM card WHERE GameSetID = ?";
-        $stmtCards = $conn->prepare($sqlCards);
-        $stmtCards->bind_param("i", $set_id);
-        $stmtCards->execute();
-        $cardsResult = $stmtCards->get_result();
-    } else {
-        
-        //If no set_id or game_id is provided, redirect back
-        header('Location: gameSets.php?game_id=' . $game_id);
-        exit();
-    }
+    include '../includes/cardService.php';    
 ?>
 
 <?php include_once('../includes/header.php'); ?>
