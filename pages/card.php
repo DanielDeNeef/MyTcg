@@ -1,5 +1,4 @@
 <?php
-    //Include necessary files and initialize DB connection
     include '../includes/dbconnect.php';
     include '../includes/controlLogin.php';
     include '../includes/message.php';
@@ -22,7 +21,7 @@
             <thead>
                 <tr>
                     <th>Name</th>
-                    <th>Type</th>
+                    <th>Number</th>
                     <th>Image</th>
                     <th>Actions</th>
                 </tr>
@@ -32,13 +31,13 @@
                 <?php while ($row = $cardsResult->fetch_assoc()): ?>
                 <tr>
                     <td><?= htmlspecialchars($row['Name']) ?></td>
-                    <td><?= htmlspecialchars($row['Type']) ?></td>
+                    <td><?= htmlspecialchars($row['CardNumber']) ?></td>
                     <td><img src="<?= htmlspecialchars($row['Image']) ?>" alt="Image" width="50"></td>
                     <td>
                         <!-- Update Button -->
                         <button class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#updateCardModal"
                             data-id="<?= $row['id'] ?>" data-name="<?= htmlspecialchars($row['Name']) ?>"
-                            data-type="<?= htmlspecialchars($row['Type']) ?>"
+                            data-type="<?= htmlspecialchars($row['CardNumber']) ?>"
                             data-image="<?= htmlspecialchars($row['Image']) ?>">
                             Update
                         </button>

@@ -21,38 +21,56 @@
     } else {
         
         //If no set_id or game_id is provided, redirect back
-        header('Location: gameSets.php?game_id=' . $game_id);
+        // header('Location: gameSets.php?game_id=' . $game_id);
         exit();
     }
     
-    //Handle CRUD actions for Cards
+    //Handle create and update actions for Cards
     if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+
+        
 
         if (isset($_POST['create_card'])) {
             //Create Card Logic
             $card_name = trim($_POST['name']);
-            $card_type = trim($_POST['type']);
+            $card_number = trim($_POST['number']);
             $card_image = trim($_POST['image']);
             $set_id = $_POST['set_id'];
+            $game_id = $_POST['game_id'];
 
-            //Validate input
-            if (!empty($card_name) && !empty($set_id)) {
-                $sql = "INSERT INTO card (Name, Type, Image, GameSetID) VALUES (?, ?, ?, ?)";
-                $stmt = $conn->prepare($sql);
-                $stmt->bind_param("sssi", $card_name, $card_type, $card_image, $set_id);
+            // Validate input
+            if (!empty($card_name) && !empty($set_id) && !empty($card_number)) {
+                // Check if the card number already exists within the set
+                $checkCardNumberSql = "SELECT id FROM card WHERE CardNumber = ? AND GameSetID = ?";
+                $stmtCheck = $conn->prepare($checkCardNumberSql);
+                $stmtCheck->bind_param("si", $card_number, $set_id);
+                $stmtCheck->execute();
+                $stmtCheck->store_result();
 
-                if ($stmt->execute()) {
-                    $_SESSION['toast'] = ['type' => 'success', 'message' => 'Card created successfully.'];
+                if ($stmtCheck->num_rows > 0) {
+                    // If a card with the same number exists in the set
+                    $_SESSION['toast'] = ['type' => 'error', 'message' => 'Card number already exists in this set.'];
+                    header('Location: card.php?set_id=' . $set_id . '&game_id=' . $game_id);
+                    exit();
                 } else {
-                    $_SESSION['toast'] = ['type' => 'danger', 'message' => 'Error creating card.'];
-                }
+                    // Proceed to insert the new card
+                    $sql = "INSERT INTO card (Name, CardNumber, Image, GameSetID) VALUES (?, ?, ?, ?)";
+                    $stmt = $conn->prepare($sql);
+                    $stmt->bind_param("sssi", $card_name, $card_number, $card_image, $set_id);
 
-                //Redirect back to the card management page
-                header('Location: card.php?set_id=' . $set_id . '?game_id=' . $game_id);
-                exit();
+                    if ($stmt->execute()) {
+                        $_SESSION['toast'] = ['type' => 'success', 'message' => 'Card created successfully.'];
+                    } else {
+                        $_SESSION['toast'] = ['type' => 'error', 'message' => 'Error creating card.'];
+                    }
+
+                    // Redirect back to the card management page
+                    header('Location: card.php?set_id=' . $set_id . '&game_id=' . $game_id);
+                    exit();
+                }
             } else {
-                $_SESSION['toast'] = ['type' => 'danger', 'message' => 'Set ID and Card Name are required.'];
-                header('Location: card.php?set_id=' . $set_id . '?game_id=' . $game_id);
+                $_SESSION['toast'] = ['type' => 'error', 'message' => 'Set ID, card number, and card name are required.'];
+                header('Location: card.php?set_id=' . $set_id . '&game_id=' . $game_id);
                 exit();
             }
         }
@@ -60,9 +78,9 @@
         if (isset($_POST['update_card'])) {
             //Validate input
             if (!empty($card_name) && !empty($card_id)) {
-                $sql = "UPDATE card SET Name = ?, Type = ?, Image = ? WHERE id = ?";
+                $sql = "UPDATE card SET Name = ?, CardNumber = ?, Image = ? WHERE id = ?";
                 $stmt = $conn->prepare($sql);
-                $stmt->bind_param("sssi", $card_name, $card_type, $card_image, $card_id);
+                $stmt->bind_param("sssi", $card_name, $card_number, $card_image, $card_id);
 
                 if ($stmt->execute()) {
                     $_SESSION['toast'] = ['type' => 'success', 'message' => 'Card updated successfully.'];
