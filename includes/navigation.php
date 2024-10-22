@@ -42,9 +42,7 @@
                 <a class="nav-link" href="<?=$baseUrl ?>pages/account.php ">Account Management</a>
             </li>
     </ul>
-    <a href="<?= $baseUrl ?>/includes/logout.php">
-        <button class="btn logout-btn mt-4">Logout</button>
-    </a>
+    <a href="<?= $baseUrl ?>/includes/logout.php">Logout</a>
 </nav>
 
 <script>
