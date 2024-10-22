@@ -1,34 +1,71 @@
 <?php 
-    session_start();
+    // session_start();
+    include 'includes/dbconnect.php';
     include 'includes/controlLogin.php';
     include 'includes/header.php';
+    include 'includes/dashboardServices.php';
+
+    // Fetch the total counts
+    $gameCount = getTotalGames();
+    $gameSetCount = getTotalGameSets();
+    $cardCount = getTotalCards();
+    $userCount = getTotalUsers();
 ?>
 
 <link rel="stylesheet" href="styles/main.css">
 
-<?php include 'includes/navigation.php' ?>
+<?php include 'includes/navigation.php'; ?>
 
-<div id="content">
-
+<div id="content" class="container mt-5">
     <!-- Dashboard Section -->
     <section id="dashboard">
-      <h1>Dashboard</h1>
-      <p>Here is a summary of your card collection by game and set.</p>
+        <h1>Dashboard</h1>
+        <p>Here is an overview of the system data.</p>
 
-      <!-- Magic: The Gathering Section -->
-      <div class="game-section">
-        <h2>Magic: The Gathering</h2>
-        <div class="card-set">
-          <div class="set-card"> ... </div>
+        <!-- Display the summary cards using Bootstrap grid -->
+        <div class="row g-2"> 
+            <!-- Game Count Card -->
+            <div class="col-12 col-sm-6 col-lg-6">
+                <div class="card text-center">
+                    <div class="card-body">
+                        <h5 class="card-title">Total Games</h5>
+                        <p class="card-text display-4"><?php echo $gameCount; ?></p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Game Set Count Card -->
+            <div class="col-12 col-sm-6 col-lg-6">
+                <div class="card text-center">
+                    <div class="card-body">
+                        <h5 class="card-title">Total Game Sets</h5>
+                        <p class="card-text display-4"><?php echo $gameSetCount; ?></p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Card Count Card -->
+            <div class="col-12 col-sm-6 col-lg-6">
+                <div class="card text-center">
+                    <div class="card-body">
+                        <h5 class="card-title">Total Cards</h5>
+                        <p class="card-text display-4"><?php echo $cardCount; ?></p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- User Count Card -->
+            <div class="col-12 col-sm-6 col-lg-6">
+                <div class="card text-center">
+                    <div class="card-body">
+                        <h5 class="card-title">Total Users</h5>
+                        <p class="card-text display-4"><?php echo $userCount; ?></p>
+                    </div>
+                </div>
+            </div>
         </div>
-      </div>
     </section>
 
     <!-- Include the footer -->
-    <?php
-    include 'includes/footer.php';
-    ?>
-  </div>
-
-
-
+    <?php include 'includes/footer.php'; ?>
+</div>
