@@ -19,30 +19,32 @@
     <h2 class="text-center">Admin Dashboard</h2>
     <ul class="nav flex-column">
         <li class="nav-item">
-            <a class="nav-link" href="<?php echo $baseUrl ?>">Dashboard</a>
+            <a class="nav-link" href="<?=$baseUrl ?>">Dashboard</a>
         </li>
         <li class="nav-item">
-            <a class="nav-link" href="<?php echo $baseUrl .'pages/collectionMng.php' ?>">Collection</a>
+            <a class="nav-link" href="<?=$baseUrl ?>pages/collectionMng.php">Collection</a>
         </li>
         <li class="nav-item">
-            <a class="nav-link" href="<?php echo $baseUrl .'pages/user.php' ?>">User Management</a>
+            <a class="nav-link" href="<?=$baseUrl ?>pages/user.php">User Management</a>
         </li>
         <?php } else { ?>
         <!-- User links -->
         <h2 class="text-center">User Dashboard</h2>
         <ul class="nav flex-column">
             <li class="nav-item">
-                <a class="nav-link" href="<?php echo $baseUrl ?>">Dashboard</a>
+                <a class="nav-link" href="<?=$baseUrl ?>">Dashboard</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="<?php echo $baseUrl .'pages/collection.php' ?>">Collection</a>
+                <a class="nav-link" href="<?=$baseUrl ?>pages/collection.php">Collection</a>
             </li>
         <?php } ?>
             <li class="nav-item">
-                <a class="nav-link" href="<?php echo $baseUrl .'pages/account.php' ?>">Account Management</a>
+                <a class="nav-link" href="<?=$baseUrl ?>pages/account.php ">Account Management</a>
             </li>
     </ul>
-    <button class="btn logout-btn mt-4" onclick="logout()">Logout</button>
+    <a href="<?= $baseUrl ?>/includes/logout.php">
+        <button class="btn logout-btn mt-4">Logout</button>
+    </a>
 </nav>
 
 <script>
