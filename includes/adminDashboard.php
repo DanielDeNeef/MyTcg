@@ -55,7 +55,4 @@
                 </div>
             </div>
         </section>
-
-        <!-- Include the footer -->
-        <?php include 'includes/footer.php'; ?>
     </div>
