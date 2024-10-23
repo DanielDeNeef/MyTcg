@@ -1,5 +1,4 @@
 <?php
-
     $config = require dirname(__DIR__) . '/config/app.php'; 
     $baseUrl = $config['url']["baseUrl"];
 

@@ -1,34 +1,24 @@
 <?php 
-    session_start();
+    include 'includes/dbconnect.php';
     include 'includes/controlLogin.php';
     include 'includes/header.php';
+    include 'includes/dashboardServices.php';
 ?>
 
 <link rel="stylesheet" href="styles/main.css">
 
-<?php include 'includes/navigation.php' ?>
+<?php include 'includes/navigation.php'; ?>
 
 <div id="content">
+<?php 
 
-    <!-- Dashboard Section -->
-    <section id="dashboard">
-      <h1>Dashboard</h1>
-      <p>Here is a summary of your card collection by game and set.</p>
+    // display the admin dashboard else display the user dashboard
+    if ($isAdmin) {
+        include 'includes/adminDashboard.php';
+    }
+    
+?>
+</div>
 
-      <!-- Magic: The Gathering Section -->
-      <div class="game-section">
-        <h2>Magic: The Gathering</h2>
-        <div class="card-set">
-          <div class="set-card"> ... </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Include the footer -->
-    <?php
-    include 'includes/footer.php';
-    ?>
-  </div>
-
-
-
+<!-- Include the footer -->
+<?php include 'includes/footer.php'; ?>
