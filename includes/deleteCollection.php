@@ -1,7 +1,8 @@
 <?php
     include 'dbconnect.php';
 
-    if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+    if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['cardId']) && isset($_POST['currentUserId'])) {
+
         $cardId = $_POST['cardId'];
         $userId = $_POST['currentUserId'];
 
@@ -19,4 +20,5 @@
             $stmt->close();
         }
     }
+
 ?>

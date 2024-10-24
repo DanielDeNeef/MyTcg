@@ -6,7 +6,7 @@ $gamesResult = $conn->query($gamesQuery);
 
 //Handle form submission for adding a card to collection
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    $userId = 1; //You would replace this with the actual logged-in user ID.
+    $userId = $_SESSION['id']; 
     $cardId = $_POST['card'];
     $amount = $_POST['amount'];
 
