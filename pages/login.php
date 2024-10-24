@@ -1,6 +1,7 @@
 <link rel="stylesheet" href="../styles/login.css">
 
 <?php
+    session_start();
     require_once '../includes/dbconnect.php';
 
     // check if the user is already connected then redirect to the index page
