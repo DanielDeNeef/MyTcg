@@ -5,6 +5,8 @@
     include '../includes/collectionService.php';
 ?>
 
+<link rel="stylesheet" href="../styles/collection.css">
+
 <?php include '../includes/navigation.php' ?>
 
 <!-- Display toast message if available -->

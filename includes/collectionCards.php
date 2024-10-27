@@ -2,7 +2,7 @@
    
     $user_id = $_SESSION['id'];
 
-    $query = "SELECT c.id, c.Amount, cr.Name as CardName, gs.Name as SetName, g.Name as GameName , c.cardId as cardID
+    $query = "SELECT c.id, c.Amount, cr.Name as CardName, gs.Name as SetName, g.Name as GameName , c.cardId as cardID, cr.image as image
             FROM Collection c
             JOIN Card cr ON c.CardId = cr.id
             JOIN cardSet gs ON cr.gameSetId = gs.id
@@ -24,7 +24,7 @@
         <?php if ($result->num_rows > 0) { ?>
         <?php while ($row = $result->fetch_assoc()) { ?>
             
-        <div class="col-md-4" id="card-<?= $row['cardID'] ?>">
+        <div class="col-md-3" id="card-<?= $row['cardID'] ?>">
             <div class="card mb-4">
 
                 <!-- Card Title as Modal Trigger -->
@@ -41,8 +41,8 @@
 
                 <!-- Card Image and Amount -->
                 <?php
-                    $imagePath = 'path_to_images/' . htmlspecialchars($row['CardName']) . '.jpg'; 
-                    if (file_exists($imagePath)) {
+                    $imagePath = $row['image']; 
+                    if ($imagePath != null) {
                 ?>
 
                 <img src="<?= $imagePath ?>" class="card-img-top" alt="<?= htmlspecialchars($row['CardName']) ?>">

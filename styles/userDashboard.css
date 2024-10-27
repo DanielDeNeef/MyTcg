@@ -4,6 +4,8 @@
     padding: 20px;
     margin-bottom: 20px;
     text-align: center;
+    background-color: #595858;
+    color: #ffff
 }
 
 .set-image {
@@ -27,33 +29,3 @@
     font-size: 1.2em;
     font-weight: bold;
 } 
-
-.card {
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    border-radius: 8px;
-    padding: 20px;
-    margin-bottom: 20px;
-    text-align: center;
-}
-
-.set-image {
-    max-width: 100%;
-    height: auto;
-    border-radius: 5px;
-    margin-bottom: 15px;
-}
-
-.chart-container {
-    position: relative;
-    width: 100%;
-    height: 200px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-.chart-center-text {
-    position: absolute;
-    font-size: 1.2em;
-    font-weight: bold;
-}

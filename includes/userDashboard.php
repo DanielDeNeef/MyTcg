@@ -17,7 +17,7 @@
 
     <div class="row">
         <?php foreach ($gameSets as $set): ?>
-        <div class="col-md-4">
+        <div class="col-md-3">
             <div class="card">
 
                 <?php if($set['imagePath'] != null){ ?>
