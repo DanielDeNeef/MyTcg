@@ -3,6 +3,7 @@
     include '../includes/controlLogin.php';
     include '../includes/message.php';
     include '../includes/cardService.php';    
+    include '../includes/importCards.php';    
 ?>
 
 <?php include_once('../includes/header.php'); ?>
@@ -22,6 +23,15 @@
         <!-- Button to Create Card -->
         <button class="btn btn-primary mb-4" data-bs-toggle="modal" data-bs-target="#createCardModal">
             Create Card
+        </button>
+
+        <button 
+            id="importCardsBtn" 
+            class="btn btn-primary mb-4"
+            data-set-id="<?= $set_id ?>" 
+            data-set-code="<?= $set['Code'] ?>"
+        >
+            MTG import
         </button>
 
         <!-- Cards Table -->
