@@ -5,11 +5,11 @@
 
     <!-- Display toast message if available -->
     <?php 
-            if (isset($_SESSION['toast'])) {
-                renderToast($_SESSION['toast']['type'], $_SESSION['toast']['message']);
-                unset($_SESSION['toast']); 
-            }
-        ?>
+        if (isset($_SESSION['toast'])) {
+            renderToast($_SESSION['toast']['type'], $_SESSION['toast']['message']);
+            unset($_SESSION['toast']); 
+        }
+    ?>
 
     <!-- Create Set Button -->
     <button class="btn btn-primary mb-4" data-bs-toggle="modal" data-bs-target="#createSetModal">

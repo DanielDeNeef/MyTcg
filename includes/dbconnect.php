@@ -1,5 +1,5 @@
 <?php
-    session_start();
+    // session_start();
     $config = require dirname(__DIR__) . '/config/app.php';
     $servername = $config['database']["servername"];
     $username = $config['database']["username"];
