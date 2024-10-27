@@ -51,4 +51,39 @@
             return 0;
         }
     }
+
+    function getUserGameSets($conn, $user_id) {
+        $query = "
+            SELECT 
+                gs.Name as SetName,
+                gs.Code as SetCode,
+                gs.Logo as imagePath,
+                COUNT(DISTINCT c.id) as totalCards,
+                COUNT(DISTINCT uc.CardId) as userCollectedCards
+            FROM cardSet gs
+            LEFT JOIN Card c ON c.gameSetId = gs.id
+            LEFT JOIN Collection uc ON uc.CardId = c.id AND uc.UserId = ?
+            GROUP BY gs.id
+        ";
+
+        $stmt = $conn->prepare($query);
+        $stmt->bind_param('i', $user_id);
+        $stmt->execute();
+        $result = $stmt->get_result();
+
+        $gameSets = [];
+        while ($row = $result->fetch_assoc()) {
+            $gameSets[] = [
+                'SetName' => $row['SetName'],
+                'SetCode' => $row['SetCode'],
+                'totalCards' => $row['totalCards'],
+                'imagePath' => $row['imagePath'],
+                'userCollectedCards' => $row['userCollectedCards'],
+            ];
+        }
+        $stmt->close();
+
+        return $gameSets;
+    }
+
 ?>
