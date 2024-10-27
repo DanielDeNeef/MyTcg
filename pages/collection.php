@@ -1,9 +1,10 @@
 <?php
     include '../includes/controlLogin.php'; 
+    include_once('../includes/header.php');
     include '../includes/message.php'; 
+    include '../includes/collectionService.php';
 ?>
 
-<?php include_once('../includes/header.php'); ?>
 <?php include '../includes/navigation.php' ?>
 
 <!-- Display toast message if available -->
@@ -21,4 +22,4 @@
     <?php include '../includes/collectionCards.php'; ?>
 </div>
 
-    <?php include_once('../includes/footer.php'); ?>
+<?php include_once('../includes/footer.php'); ?>

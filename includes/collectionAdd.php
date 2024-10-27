@@ -1,5 +1,3 @@
-<?php include '../includes/collectionService.php'; ?> 
-
 <div class="container my-5">
     <h2 class="mb-4">My Card Collection</h2>
 
