@@ -48,6 +48,8 @@
 
                 <button type="submit" class="btn btn-primary">Add to Collection</button>
             </form>
+
+            <?= include '../includes/collectionImportForm.php'; ?>
         </div>
     </div>
 </div>

@@ -1,6 +1,6 @@
 <?php
-include '../includes/dbconnect.php';
-//Fetch games
+include 'dbconnect.php';
+//get games
 $gamesQuery = "SELECT id, Name FROM Game";
 $gamesResult = $conn->query($gamesQuery);
 
@@ -30,7 +30,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 if (isset($_GET['game'])) {
     $gameId = $_GET['game'];
     
-    //Fetch game sets for the selected game
+    //get game sets for the selected game
     $gameSetsQuery = "SELECT id, Name FROM cardSet WHERE GameId = $gameId";
     $gameSetsResult = $conn->query($gameSetsQuery);
 
@@ -48,7 +48,7 @@ if (isset($_GET['game'])) {
 if (isset($_GET['gameSet'])) {
     $gameSetId = $_GET['gameSet'];
     
-    //Fetch cards for the selected game set
+    //get cards for the selected game set
     $cardsQuery = "SELECT id, Name FROM Card WHERE GameSetId = $gameSetId";
     $cardsResult = $conn->query($cardsQuery);
 
