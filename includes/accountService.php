@@ -73,6 +73,7 @@
             $stmt->bind_param("si", $new_username, $current_user_id);
             if ($stmt->execute()) {
                 $update_success = "het updaten is gelukt.";
+                $_SESSION['username'] = $new_username;
             }
             $stmt->close();
         }
