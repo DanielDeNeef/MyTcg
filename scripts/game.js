@@ -83,4 +83,41 @@ function deleteCard(cardId, setId, gameId) {
 }
 
 
+/**
+ * Logic to handle MTG import 
+ */
+
+// Function to import cards from MTG API
+function importCardsFromMTG(setId, setCode) {
+
+
+    fetch(`../includes/importCards.php?set_id=${setId}&set_code=${setCode}`)
+        .then(response => response.json())
+        .then(data => {
+
+
+            if (data.success) {
+                location.reload();
+            }
+        })
+        .catch(error => {
+            console.log('some error '+JSON.stringify(error));
+        });
+}
+
+// Event listener for the import button click
+document.addEventListener('DOMContentLoaded', function() {
+    const importCardsBtn = document.getElementById('importCardsBtn');
+    if (importCardsBtn) {
+        importCardsBtn.addEventListener('click', function() {
+            const setId = this.getAttribute('data-set-id'); 
+            const setCode = this.getAttribute('data-set-code'); 
+            
+            importCardsFromMTG(setId, setCode); 
+        });
+    }
+});
+
+
+
 
