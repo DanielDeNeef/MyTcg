@@ -15,6 +15,8 @@
     // display the admin dashboard else display the user dashboard
     if ($isAdmin) {
         include 'includes/adminDashboard.php';
+    }else{
+        include 'includes/userDashboard.php';
     }
     
 ?>
