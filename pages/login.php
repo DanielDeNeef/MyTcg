@@ -23,14 +23,14 @@
  
         // Check if the user is not empty
          if(empty(trim($_POST["username"]))){
-             $username_err = "The user cannot be empty";
+             $username_err = "userName moet ingevuld zijn";
          } else{
              $username = trim($_POST["username"]);
          }
  
          // check if the password is not empty
          if(empty(trim($_POST["password"]))){
-             $password_err = "You need to provide a password";
+             $password_err = "het paswoord is verplicht";
          } else{
              $password = trim($_POST["password"]);
          }
@@ -74,17 +74,17 @@
                              } else{
  
                                  // credentials are not correct set error
-                                 $login_err = "wrong user or password";
+                                 $login_err = "paswoord is niet juist";
                              }
                          }
                      } else{
  
                          // user does not exist
-                         $login_err = "user does not exist";
+                         $login_err = "Gebruiker bestaat niet";
                      }
                  } else{
  
-                     $login_err = "O_o something went wrong !";
+                     $login_err = "Oeps er is iets gebroken !";
                  }
                  // Close statement
                  $stmt->close();

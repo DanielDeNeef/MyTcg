@@ -48,7 +48,9 @@
                     <!-- Update Buttons -->
                     <button class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#updateSetModal"
                         data-id="<?= $row['id'] ?>" data-name="<?= htmlspecialchars($row['Name']) ?>"
-                        data-logo="<?= htmlspecialchars($row['Logo']) ?>">
+                        data-logo="<?= htmlspecialchars($row['Logo']) ?>" 
+                        data-code="<?= htmlspecialchars($row['Code']) ?>"
+                        >
                         Update
                     </button>
 

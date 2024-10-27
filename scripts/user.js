@@ -26,7 +26,6 @@ document.querySelector('#updateUserForm').addEventListener('submit', function(e)
         })
         .then(response => response.text())
         .then(data => {
-            alert(data);
             location.reload();
         })
         .catch(error => console.error('Error:', error));
@@ -45,7 +44,6 @@ document.querySelector('#createUserForm').addEventListener('submit', function(e)
         })
         .then(response => response.text())
         .then(data => {
-            alert(data);
             location.reload();
         })
         .catch(error => console.error('Error:', error));
@@ -53,7 +51,7 @@ document.querySelector('#createUserForm').addEventListener('submit', function(e)
 
 // Function to delete user
 function deleteUser(userId) {
-    if (confirm('Are you sure you want to delete this user?')) {
+    if (confirm('will je deze gebruiker verwijderen ?')) {
         const formData = new FormData();
         formData.append('id', userId);
         formData.append('deleteUser', true);
@@ -64,7 +62,6 @@ function deleteUser(userId) {
             })
             .then(response => response.text())
             .then(data => {
-                alert(data);
                 location.reload();
             })
             .catch(error => console.error('Error:', error));

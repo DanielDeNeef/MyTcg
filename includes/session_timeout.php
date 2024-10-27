@@ -1,7 +1,7 @@
 <?php
 
     // Set session timeout duration 
-    $session_timeout = 300;
+    $session_timeout = 900;
 
     // Check if user is logged in
     if (isset($_SESSION["login"]) && $_SESSION["login"] === true) {
