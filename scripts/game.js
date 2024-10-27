@@ -40,10 +40,14 @@ document.addEventListener('DOMContentLoaded', function() {
         button.addEventListener('click', function() {
             const setId = this.getAttribute('data-id');
             const setName = this.getAttribute('data-name');
+            const setCode = this.getAttribute('data-code');
             const setLogo = this.getAttribute('data-logo');
+
+            console.log('game code is '+ setCode);
 
             document.getElementById('updateSetId').value = setId;
             document.getElementById('updateSetName').value = setName;
+            document.getElementById('updateSetCode').value = setCode;
             document.getElementById('updateSetLogo').value = setLogo;
         });
     });
