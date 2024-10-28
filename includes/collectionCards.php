@@ -1,24 +1,42 @@
 <?php
-   
-    $user_id = $_SESSION['id'];
 
-    $query = "SELECT c.id, c.Amount, cr.Name as CardName, gs.Name as SetName, g.Name as GameName , c.cardId as cardID, cr.image as image
+    $user_id = $_SESSION['id'];
+    
+    // Check if a search term is provided
+    $searchTerm = isset($_GET['search']) ? $_GET['search'] : '';
+
+    // Prepare the SQL query with search filtering
+    $query = "SELECT c.id, c.Amount, cr.Name as CardName, gs.Name as SetName, g.Name as GameName, c.cardId as cardID, cr.image as image
             FROM Collection c
             JOIN Card cr ON c.CardId = cr.id
             JOIN cardSet gs ON cr.gameSetId = gs.id
             JOIN Game g ON gs.GameId = g.id
-            WHERE c.UserId = ?";
+            WHERE c.UserId = ?
+            AND (cr.Name LIKE ? OR gs.Name LIKE ? OR c.cardId LIKE ?)"; 
+
     $stmt = $conn->prepare($query);
-    $stmt->bind_param('i', $user_id); 
+    
+    $searchWildcard = '%' . $searchTerm . '%';
+    
+
+    $stmt->bind_param('isss', $user_id, $searchWildcard, $searchWildcard, $searchWildcard); 
     $stmt->execute();
     $result = $stmt->get_result();
-
 ?>
 
-</script src="../scripts/collection.js" ></script>
+<script src="../scripts/collection.js"></script>
 
 <div class="container my-5">
-    <h3>Your Collection </h3>
+    <h3>Your Collection</h3>
+    
+    <!-- Search Form -->
+    <form method="GET" action="">
+        <div class="input-group mb-3">
+            <input type="text" class="form-control" name="search" placeholder="Search by card name, set, or card ID"
+                   value="<?= htmlspecialchars($searchTerm) ?>">
+            <button class="btn btn-primary" type="submit">Search</button>
+        </div>
+    </form>
 
     <div class="row">
         <?php if ($result->num_rows > 0) { ?>
@@ -45,7 +63,8 @@
                     if ($imagePath != null) {
                 ?>
 
-                <img src="<?= $imagePath ?>" class="card-img-top" alt="<?= htmlspecialchars($row['CardName']) ?>">
+                <!-- Clickable image to open modal -->
+                <img src="<?= $imagePath ?>" class="card-img-top" alt="<?= htmlspecialchars($row['CardName']) ?>" onclick="showImageModal('<?= $imagePath ?>')" style="cursor: pointer;">
                 <?php 
                     } else { ?>
                         <div class="card-img-top d-flex justify-content-center align-items-center"
@@ -72,7 +91,15 @@
                 <p>er zijn geen kaarten in uw verzameling</p>
         <?php } ?>
     </div>
+
+    <!-- Full-Image Modal -->
+    <div id="imageModal" class="modal">
+        <span class="close" onclick="closeImageModal()">&times;</span>
+        <img class="modal-content" id="fullImage">
+    </div>
+    
 </div>
+
 
 <!-- Modal to change amount or delete collection -->
 <div class="modal fade" id="updateAmountModal" tabindex="-1" aria-labelledby="updateAmountModalLabel"
@@ -98,5 +125,3 @@
         </div>
     </div>
 </div>
-
-
