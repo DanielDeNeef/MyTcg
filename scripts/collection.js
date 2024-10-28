@@ -113,4 +113,22 @@ function deleteCard(cardId, userId) {
     .catch(error => console.error('Error:', error));
 }
 
+function showImageModal(imageSrc) {
+    document.getElementById('imageModal').style.display = "block";
+    document.getElementById('fullImage').src = imageSrc;
+}
+
+
+function closeImageModal() {
+    document.getElementById('imageModal').style.display = "none";
+}
+
+window.onclick = function(event) {
+    let modal = document.getElementById('imageModal');
+    if (event.target === modal) {
+        closeImageModal();
+    }
+}
+
+
 

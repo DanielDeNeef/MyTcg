@@ -1,4 +1,4 @@
-/* Sidebar styling for larger screens */
+
 #sidebar {
   width: 250px;
   position: fixed;
@@ -7,14 +7,14 @@
   left: -260px; 
   padding: 1rem;
   background-color: #323232;
-  transition: left 0.3s ease; 
+  transition: left 0.3s ease;
+  z-index: 1; 
 }
 
-#sidebar a, h2{
+#sidebar a, h2 {
   color: #ffff;
 }
 
-/* Show the sidebar on larger screens */
 @media (min-width: 768px) {
   #sidebar {
       left: 0; 
@@ -24,12 +24,36 @@
   }
 }
 
-/* Sidebar active state for small screens */
+
 #sidebar.active {
-  left: 0; 
+  left: 0;
+  z-index: 1000; 
 }
 
-/* Mobile navigation styles */
+#sidebar-overlay {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5); 
+  z-index: 999; 
+}
+
+@media (max-width: 767px) {
+  #sidebar {
+      position: fixed;
+      left: -260px; 
+  }
+  #sidebar.active {
+      left: 0;
+  }
+  #sidebar-overlay.active {
+      display: block;
+  }
+}
+
 #mobile-nav {
   display: flex;
   justify-content: space-between;
@@ -37,15 +61,4 @@
   padding: 1rem;
   background-color: #323232;
   border-bottom: 1px solid #ddd;
-}
-
-/* Hide the sidebar initially on small screens */
-@media (max-width: 767px) {
-  #sidebar {
-      position: fixed;
-      left: -260px; 
-  }
-  #sidebar.active {
-      left: 0; 
-  }
 }
