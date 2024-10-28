@@ -14,9 +14,11 @@
 
 <!-- Sidebar Navigation -->
 <nav id="sidebar">
+
+    <h2 class="text-center">My TCG</h2>
     <?php if ($isAdmin) { ?>
+
     <!-- Admin links -->
-    <h2 class="text-center">Admin Dashboard</h2>
     <ul class="nav flex-column">
         <li class="nav-item">
             <a class="nav-link" href="<?=$baseUrl ?>">Dashboard</a>
@@ -28,8 +30,8 @@
             <a class="nav-link" href="<?=$baseUrl ?>pages/user.php">User Management</a>
         </li>
         <?php } else { ?>
+
         <!-- User links -->
-        <h2 class="text-center">User Dashboard</h2>
         <ul class="nav flex-column">
             <li class="nav-item">
                 <a class="nav-link" href="<?=$baseUrl ?>">Dashboard</a>
@@ -46,11 +48,11 @@
 </nav>
 
 <script>
-document.addEventListener("DOMContentLoaded", function() {
-    // Event listener for menu toggle
-    document.getElementById("menu-toggle").addEventListener("click", function() {
-        const sidebar = document.getElementById("sidebar");
-        sidebar.classList.toggle("active");
+    document.addEventListener("DOMContentLoaded", function() {
+        // Event listener for menu toggle
+        document.getElementById("menu-toggle").addEventListener("click", function() {
+            const sidebar = document.getElementById("sidebar");
+            sidebar.classList.toggle("active");
+        });
     });
-});
 </script>
