@@ -6,13 +6,13 @@
     $searchTerm = isset($_GET['search']) ? $_GET['search'] : '';
 
     // Prepare the SQL query with search filtering
-    $query = "SELECT c.id, c.Amount, cr.Name as CardName, gs.Name as SetName, g.Name as GameName, c.cardId as cardID, cr.image as image
+    $query = "SELECT c.id, c.Amount,cr.CardNumber, cr.Name as CardName, gs.Name as SetName, g.Name as GameName, c.cardId as cardID, cr.image as image
             FROM Collection c
             JOIN Card cr ON c.CardId = cr.id
             JOIN cardSet gs ON cr.gameSetId = gs.id
             JOIN Game g ON gs.GameId = g.id
             WHERE c.UserId = ?
-            AND (cr.Name LIKE ? OR gs.Name LIKE ? OR c.cardId LIKE ?)"; 
+            AND (cr.Name LIKE ? OR gs.Name LIKE ? OR cr.CardNumber LIKE ?)"; 
 
     $stmt = $conn->prepare($query);
     
@@ -97,7 +97,7 @@
         <span class="close" onclick="closeImageModal()">&times;</span>
         <img class="modal-content" id="fullImage">
     </div>
-    
+
 </div>
 
 
