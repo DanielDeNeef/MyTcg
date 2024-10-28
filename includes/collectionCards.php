@@ -93,7 +93,7 @@
     </div>
 
     <!-- Full-Image Modal -->
-    <div id="imageModal" class="modal">
+    <div id="imageModal" class="imageModal">
         <span class="close" onclick="closeImageModal()">&times;</span>
         <img class="modal-content" id="fullImage">
     </div>
