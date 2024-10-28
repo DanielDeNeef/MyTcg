@@ -1,0 +1,10 @@
+User-agent: *
+Disallow: /includes/
+Allow: /Pages/account.php
+Allow: /Pages/card.php
+Allow: /Pages/collection.php
+Allow: /Pages/gameSet.php
+Allow: /Pages/registration.php
+Allow: /Pages/user.php
+
+Sitemap: http://localhost/myTcg/sitemap.xml

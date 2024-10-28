@@ -1,5 +1,8 @@
 <?php
 
+    $config = require dirname(__DIR__) . '/config/app.php'; 
+    $baseUrl = $config['url']["baseUrl"];
+
     // Set session timeout duration 
     $session_timeout = 900;
 
@@ -16,7 +19,7 @@
                 session_unset();
                 session_destroy();
                 // Redirect to the login page
-                header("location: pages/login.php?session_expired=1");
+                header("location: ". $baseUrl. "pages/login.php?session_expired=1");
                 exit;
             }
         }
@@ -24,7 +27,7 @@
         $_SESSION['last_activity'] = time();
     } else {
         // If the user is not logged in, redirect them to the login page
-        header("location: pages/login.php");
+        header("location: ". $baseUrl ."pages/login.php");
         exit;
     }
 ?>

@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+
+    <url>
+        <loc>http://localhost/myTcg/index.php</loc>
+        <lastmod>2023-10-28</lastmod>
+    </url>
+
+    <url>
+        <loc>http://localhost/myTcg/Pages/account.php</loc>
+        <lastmod>2023-10-28</lastmod>
+    </url>
+
+    <url>
+        <loc>http://localhost/myTcg/Pages/card.php</loc>
+        <lastmod>2023-10-28</lastmod>
+    </url>
+
+    <url>
+        <loc>http://localhost/myTcg/Pages/collection.php</loc>
+        <lastmod>2023-10-28</lastmod>
+    </url>
+
+    <url>
+        <loc>http://localhost/myTcg/Pages/collectionMng.php</loc>
+        <lastmod>2023-10-28</lastmod>
+    </url>
+
+    <url>
+        <loc>http://localhost/myTcg/Pages/gameSet.php</loc>
+        <lastmod>2023-10-28</lastmod>
+    </url>
+
+    <url>
+        <loc>http://localhost/myTcg/Pages/login.php</loc>
+        <lastmod>2023-10-28</lastmod>
+    </url>
+
+    <url>
+        <loc>http://localhost/myTcg/Pages/registration.php</loc>
+        <lastmod>2023-10-28</lastmod>
+    </url>
+
+    <url>
+        <loc>http://localhost/myTcg/Pages/user.php</loc>
+        <lastmod>2023-10-28</lastmod>
+    </url>
+
+</urlset>
