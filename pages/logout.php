@@ -2,6 +2,9 @@
 // Initialize the session
 session_start();
 
+$config = require dirname(__DIR__) . '/config/app.php'; 
+$baseUrl = $config['url']["baseUrl"];
+
 // Unset all session variables
 $_SESSION = array();
 
@@ -9,6 +12,6 @@ $_SESSION = array();
 session_destroy();
 
 // Redirect to login page
-header("location: ../pages/login.php");
+header("location: ". $baseUrl ."pages/login.php");
 exit;
 ?>

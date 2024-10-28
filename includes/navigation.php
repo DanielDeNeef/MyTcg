@@ -44,7 +44,7 @@
                 <a class="nav-link" href="<?=$baseUrl ?>pages/account.php ">Account Management</a>
             </li>
     </ul>
-    <a href="<?= $baseUrl ?>/includes/logout.php">Logout</a>
+    <a href="<?= $baseUrl ?>/pages/logout.php">Logout</a>
 </nav>
 
 <script>
